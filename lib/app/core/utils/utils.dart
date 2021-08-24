@@ -1,0 +1,3 @@
+void formatDate() {}
+
+void validNumber() {}

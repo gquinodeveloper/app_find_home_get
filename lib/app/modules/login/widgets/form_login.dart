@@ -49,7 +49,9 @@ class FormLogin extends StatelessWidget {
                   focusedBorderColor: AppTheme.cyan,
                   fontSize: 14.0,
                   fontColor: Colors.black45,
-                  //onChanged: ,
+                  onChanged: (value) {
+                    _.onChangeEmail(value);
+                  },
                 ),
                 SizedBox(height: 20.0),
                 InputText(
@@ -59,19 +61,22 @@ class FormLogin extends StatelessWidget {
                   keyboardType: TextInputType.text,
                   labelText: "Password",
                   filled: false,
+                  obscureText: true,
+                  maxLines: 1,
                   enabledBorderColor: Colors.black26,
                   focusedBorderColor: AppTheme.cyan,
                   fontSize: 14.0,
                   fontColor: Colors.black45,
                   suffixIcon: Icon(Icons.visibility, color: AppTheme.light),
-                  //onChanged: ,
+                  onChanged: _.onChangePassword,
                 ),
                 SizedBox(height: 30.0),
                 PrimaryButton(
                   texto: "Sign in",
-                  onPressed: () {
-                    print("object");
-                  },
+                  onPressed: _.auth,
+                  /*  onPressed: () {
+                    _.auth();
+                  }, */
                 ),
                 SizedBox(height: 30.0),
                 Row(
@@ -85,7 +90,9 @@ class FormLogin extends StatelessWidget {
                           ?.copyWith(color: Colors.black54),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoutes.SIGNUP);
+                      },
                       child: Text(
                         "Create new account",
                         style: Theme.of(context).textTheme.subtitle2?.copyWith(
